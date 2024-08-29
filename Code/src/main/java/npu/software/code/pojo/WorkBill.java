@@ -9,13 +9,11 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class WorkBill {
+    private String idWb;
     private String uid;
-    private String name;
-    private String account;
-    private String password;
-    private Integer dept;
+    private String idPos;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
-    private String num;
+    private Integer state;
 }

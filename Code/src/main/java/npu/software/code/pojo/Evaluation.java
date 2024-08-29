@@ -7,5 +7,5 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Feedback {
+public class Evaluation {
 }
