@@ -1,10 +1,11 @@
 package npu.software.code;
 
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CodeApplicationTests {
+class HelloWorldApplicationTests {
 
     @Test
     void contextLoads() {
