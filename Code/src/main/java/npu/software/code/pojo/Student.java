@@ -1,5 +1,6 @@
 package npu.software.code.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Student{
     /**
-     * 学生用户id
+     * 学生学号
      */
     private String uid;
 
@@ -21,13 +22,9 @@ public class Student{
     private String name;
 
     /**
-     * 账号
-     */
-    private String account;
-
-    /**
      * 密码
      */
+    @JsonIgnore // 不返回密码
     private String password;
 
     /**
@@ -46,11 +43,6 @@ public class Student{
     private LocalDateTime updateTime;
 
     /**
-     * 学号
-     */
-    private String num;
-
-    /**
      * 性别
      */
     private Short gender;
@@ -63,7 +55,7 @@ public class Student{
     /**
      * 总工作时长
      */
-    private LocalDateTime workTime;
+    private Double workTime;
 
     /**
      * 薪资
