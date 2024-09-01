@@ -3,6 +3,7 @@ package npu.software.code.mapper;
 import npu.software.code.pojo.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -26,4 +27,9 @@ public interface StudentMapper {
 
     @Select("select * from student where uid = #{uid}")
     Student getByUid(String uid);
+
+    void update(Student student);
+
+    @Update("update student set password = #{newPwd}, update_time = now() where uid = #{uid}")
+    void updatePwd(String newPwd, String uid);
 }

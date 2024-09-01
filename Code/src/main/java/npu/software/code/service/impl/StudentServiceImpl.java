@@ -6,6 +6,7 @@ import npu.software.code.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,5 +27,16 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student getByUid(String uid) {
         return studentMapper.getByUid(uid);
+    }
+
+    @Override
+    public void update(Student student) {
+        student.setUpdateTime(LocalDateTime.now());
+        studentMapper.update(student);
+    }
+
+    @Override
+    public void updatePwd(String newPwd, String uid) {
+        studentMapper.updatePwd(newPwd, uid);
     }
 }

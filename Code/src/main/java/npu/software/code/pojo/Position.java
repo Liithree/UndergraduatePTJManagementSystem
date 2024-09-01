@@ -53,7 +53,7 @@ public class Position {
     /**
      * 工作时间
      */
-    private LocalDateTime workTime;
+    private Double workTime;
 
     /**
      * 工作薪资

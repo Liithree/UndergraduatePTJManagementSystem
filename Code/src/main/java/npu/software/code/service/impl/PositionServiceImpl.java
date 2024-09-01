@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PositionServiceImpl implements PositionService {
@@ -22,8 +24,18 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public void add(Position position) {
-        position.setCreateTime(LocalDateTime.now());
-        position.setUpdateTime(LocalDateTime.now());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        position.setIdPos("POS" + now.format(dtf));
+        position.setCreateTime(now);
+        position.setUpdateTime(now);
+        position.setState(1);
         positionMapper.insert(position);
+    }
+
+    @Override
+    public void update(Position position) {
+        position.setUpdateTime(LocalDateTime.now());
+        positionMapper.update(position);
     }
 }

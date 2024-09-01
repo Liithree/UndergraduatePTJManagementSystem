@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="npu.software.code.mapper.StudentMapper">
+
+    <!--更新学生信息-->
+    <update id="update">
+        update student
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="dept != null and dept != ''">
+                dept = #{dept},
+            </if>
+            <if test="workTime != null">
+                work_time = #{workTime},
+            </if>
+            <if test="salary != null">
+                salary = #{salary},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where uid = #{uid}
+    </update>
+</mapper>

@@ -16,4 +16,10 @@ public interface PositionService {
      * @param position
      */
     void add(Position position);
+
+    /**
+     * 修改岗位信息
+     * @param position
+     */
+    void update(Position position);
 }

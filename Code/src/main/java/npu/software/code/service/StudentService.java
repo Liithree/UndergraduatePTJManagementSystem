@@ -19,4 +19,12 @@ public interface StudentService {
     List<Student> list();
 
     Student getByUid(String uid);
+
+    void update(Student student);
+
+    /**
+     * 更新密码
+     * @param newPwd
+     */
+    void updatePwd(String newPwd, String uid);
 }

@@ -5,10 +5,7 @@ import npu.software.code.pojo.Position;
 import npu.software.code.pojo.Result;
 import npu.software.code.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class PositionController {
     private PositionService positionService;
 
     /**
-     * 查询所有职位数据
+     * 查询所有岗位数据
      * @return
      */
     @GetMapping("/positions")
@@ -38,10 +35,24 @@ public class PositionController {
      */
     @PostMapping("/positions")
     public Result add(@RequestBody Position position){
-        log.info("添加岗位信息：{}", position);
+        log.info("添加岗位：{}", position);
 
         // 调用service添加岗位信息
         positionService.add(position);
+        return Result.success();
+    }
+
+    /**
+     * 更新岗位信息
+     * @param position
+     * @return
+     */
+    @PutMapping("/positions")
+    public Result update(@RequestBody Position position){
+        log.info("更新岗位信息：{}", position);
+
+        // 调用service更新岗位信息
+        positionService.update(position);
         return Result.success();
     }
 }

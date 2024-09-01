@@ -24,7 +24,7 @@ public class Student{
     /**
      * 密码
      */
-    @JsonIgnore // 不返回密码
+//    @JsonIgnore // 不返回密码
     private String password;
 
     /**
