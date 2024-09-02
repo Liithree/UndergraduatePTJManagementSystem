@@ -39,4 +39,14 @@ public class WorkBill {
      *  工单状态
      */
     private Integer state;
+
+    /**
+     * 签到时间
+     */
+    private LocalDateTime signInTime;
+
+    /**
+     * 签退时间
+     */
+    private LocalDateTime signOutTime;
 }
