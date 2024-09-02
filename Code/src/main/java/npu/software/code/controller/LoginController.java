@@ -20,6 +20,10 @@ public class LoginController {
     @Autowired
     private StudentService studentService;
 
+    /**
+     * 用户登录
+     * API接口文档：2.1
+     */
     @PostMapping("/login")
     public Result login(@RequestBody Student student){
         log.info("登录：{}", student);

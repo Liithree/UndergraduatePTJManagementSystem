@@ -20,7 +20,7 @@ public class MessageServiceImpl implements MessageService {
     public List<Message> list(String token) {
         // 解析token，如果是root用户则返回所有留言，否则返回用户自己的留言
         String uid = (String) JwtUtils.parseJwt(token).get("uid");
-        if(!"root".equals(uid)) {
+        if(!StaticValue.rootAccount.equals(uid)) {
             return messageMapper.listByUid(uid);
         }else{
             return messageMapper.list();

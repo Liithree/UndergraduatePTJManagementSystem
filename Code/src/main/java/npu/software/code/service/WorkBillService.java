@@ -7,11 +7,11 @@ import java.util.List;
 public interface WorkBillService {
 
     /**
-     * 新建工单
+     * 新建工单，返回完整的工单信息
      * @param workBill
      * @return
      */
-    void add(WorkBill workBill, String token);
+    WorkBill add(WorkBill workBill, String token);
 
     /**
      * 管理员查看所有工单

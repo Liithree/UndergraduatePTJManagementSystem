@@ -32,4 +32,33 @@
         </set>
         where id_pos = #{idPos}
     </update>
+
+
+    <select id="search">
+        select * from position
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%', #{name}, '%')
+            </if>
+            <if test="description != null and description != ''">
+                and description like concat('%', #{description}, '%')
+            </if>
+            <if test="dept != null">
+                and dept = #{dept}
+            </if>
+            <if test="begin != null and end != null">
+                and create_time between #{begin} and #{end}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="workTimeLow != null and workTimeUp != null">
+                and work_time between #{workTimeLow} and #{workTimeUp}
+            </if>
+            <if test="salaryLow != null and salaryUp != null">
+                and salary between #{salaryLow} and #{salaryUp}
+            </if>
+        </where>
+        order by state desc, create_time desc
+    </select>
 </mapper>

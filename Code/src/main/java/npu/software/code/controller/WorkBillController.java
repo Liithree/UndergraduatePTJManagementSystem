@@ -17,18 +17,22 @@ public class WorkBillController {
 
     /**
      * 创建工单
-     * @return
+     * API接口文档：3.4
      */
     @PostMapping("/workbill")
     public Result add(@RequestBody WorkBill workBill, @RequestHeader(name = "Authorization") String token){
         log.info("创建了一个工单");
 
-        workBillService.add(workBill, token);
-        return Result.success();
+        WorkBill w = workBillService.add(workBill, token);
+        if(w == null){
+            return Result.error("岗位已被申请");
+        }
+        return Result.success(w);
     }
 
     /**
      * 管理员查看所有工单
+     * API接口文档1.2
      */
     @GetMapping("/root/workbills")
     public Result listRoot(){
@@ -40,6 +44,7 @@ public class WorkBillController {
 
     /**
      * 用户查看自己的工单
+     * API接口文档：3.5
      */
     @GetMapping("/student/workbills")
     public Result listStudent(@RequestHeader(name = "Authorization") String token){

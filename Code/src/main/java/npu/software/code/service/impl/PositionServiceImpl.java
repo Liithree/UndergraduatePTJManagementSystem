@@ -6,10 +6,10 @@ import npu.software.code.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class PositionServiceImpl implements PositionService {
@@ -37,5 +37,15 @@ public class PositionServiceImpl implements PositionService {
     public void update(Position position) {
         position.setUpdateTime(LocalDateTime.now());
         positionMapper.update(position);
+    }
+
+    @Override
+    public Position getById(String idPos) {
+        return positionMapper.getById(idPos);
+    }
+
+    @Override
+    public List<Position> search(String name, String description, Integer dept, LocalDate begin, LocalDate end, Integer state, Double workTimeLow, Double workTimeUp, Double salaryLow, Double salaryUp) {
+        return positionMapper.search(name, description, dept, begin, end, state, workTimeLow, workTimeUp, salaryLow, salaryUp);
     }
 }

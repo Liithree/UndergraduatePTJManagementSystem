@@ -19,6 +19,5 @@ public class ReplyServiceImpl implements RelpyService {
         reply.setCreateTime(LocalDateTime.now());
         reply.setIdReply("RP" + LocalDateTime.now().format(StaticValue.dtf));
         replyMapper.add(reply);
-
     }
 }

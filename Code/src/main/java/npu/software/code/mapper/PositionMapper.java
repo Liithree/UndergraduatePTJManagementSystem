@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -28,4 +29,17 @@ public interface PositionMapper {
      * @param position
      */
     void update(Position position);
+
+    /**
+     * 根据id查询岗位信息
+     * @param idPos
+     * @return
+     */
+    @Select("select * from position where id_pos = #{idPos}")
+    Position getById(String idPos);
+
+    /**
+     * 根据筛选信息查询岗位
+     */
+    List<Position> search(String name, String description, Integer dept, LocalDate begin, LocalDate end, Integer state, Double workTimeLow, Double workTimeUp, Double salaryLow, Double salaryUp);
 }
