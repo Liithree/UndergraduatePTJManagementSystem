@@ -37,6 +37,14 @@ public class LoginController {
             String jwt = JwtUtils.generateJwt(claims);
             return Result.success("root" + ":" + jwt);
         }
+        if(account.equals(StaticValue.signAccount) && password.equals(StaticValue.signPassword)){
+            // 生成打卡机令牌
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("uid", StaticValue.signAccount);
+            claims.put("password", StaticValue.signPassword);
+            String jwt = JwtUtils.generateJwt(claims);
+            return Result.success("sign" + ":" + jwt);
+        }
         Student s = studentService.login(student);
         // 登录成功，生成令牌
         if(s != null){

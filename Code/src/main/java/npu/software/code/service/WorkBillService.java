@@ -29,4 +29,10 @@ public interface WorkBillService {
      * @param workBill
      */
     void update(WorkBill workBill);
+
+    /**
+     * 根据id查询工单
+     * @param idWb
+     */
+    WorkBill getById(String idWb);
 }

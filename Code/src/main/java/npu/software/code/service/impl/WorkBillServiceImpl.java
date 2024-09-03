@@ -68,4 +68,9 @@ public class WorkBillServiceImpl implements WorkBillService {
         workBill.setUpdateTime(LocalDateTime.now());
         workBillMapper.update(workBill);
     }
+
+    @Override
+    public WorkBill getById(String idWb) {
+        return workBillMapper.getById(idWb);
+    }
 }

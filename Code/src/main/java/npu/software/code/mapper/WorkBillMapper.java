@@ -21,4 +21,7 @@ public interface WorkBillMapper {
 
     @Update("update work_bill set update_time = #{updateTime}, state = #{state}, sign_in_time = #{signInTime}, sign_out_time = #{signOutTime} where id_wb = #{idWb}")
     void update(WorkBill workBill);
+
+    @Select("select * from work_bill where id_wb = #{idWb}")
+    WorkBill getById(String idWb);
 }

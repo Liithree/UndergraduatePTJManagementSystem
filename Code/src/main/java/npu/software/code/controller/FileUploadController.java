@@ -22,7 +22,7 @@ public class FileUploadController {
         log.info("上传文件：{}", originalFilename);
 
         // 保证文件名字是唯一的，防止文件覆盖
-        String filename = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
+        String filename = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf('.'));
         file.transferTo(new File(url + filename));
         return Result.success(url + filename);
     }
