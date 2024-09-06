@@ -25,4 +25,9 @@ public class EvaluationServiceImpl implements EvaluationService {
         evaluation.setIdEvl("EVL" + LocalDateTime.now().format(StaticValue.dtf));
         evaluationMapper.add(evaluation);
     }
+
+    @Override
+    public void delete(String idEvl) {
+        evaluationMapper.delete(idEvl);
+    }
 }

@@ -27,4 +27,10 @@ public interface StudentService {
      * @param newPwd
      */
     void updatePwd(String newPwd, String uid);
+
+    /**
+     * 添加学生
+     * @param student
+     */
+    void add(Student student);
 }

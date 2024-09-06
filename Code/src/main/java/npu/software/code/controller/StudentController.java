@@ -94,4 +94,20 @@ public class StudentController {
         log.info("学生修改密码成功：{}", uid);
         return Result.success();
     }
+
+    /**
+     * 管理员添加学生信息
+     */
+    @PostMapping("/root/students")
+    public Result add(@RequestHeader(name = "Authorization") String token, @RequestBody Student student){
+        String uid = StaticValue.getUid(token);
+        if(!StaticValue.rootAccount.equals(uid)){
+            log.info("非管理员用户添加学生信息被拒绝");
+            return Result.error("无权添加");
+        }
+
+        log.info("管理员添加学生用户信息：{}", student);
+        studentService.add(student);
+        return Result.success();
+    }
 }

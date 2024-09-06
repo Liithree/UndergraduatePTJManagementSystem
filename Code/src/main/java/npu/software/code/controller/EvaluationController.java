@@ -10,10 +10,7 @@ import npu.software.code.service.EvaluationService;
 import npu.software.code.service.PositionService;
 import npu.software.code.service.WorkBillService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Statement;
 import java.time.LocalDateTime;
@@ -61,6 +58,23 @@ public class EvaluationController {
         workBill.setUpdateTime(LocalDateTime.now());
         workBill.setState(6);
         workBillService.update(workBill);
+        return Result.success();
+    }
+
+    /**
+     * 管理员删除不当评价
+     *
+     */
+    @DeleteMapping("/root/evaluations/{idEvl}")
+    public Result delete(@RequestHeader(name = "Authorization") String token, @PathVariable String idEvl){
+        log.info("管理员删除不当评价：{}", idEvl);
+
+        String uid = StaticValue.getUid(token);
+        if(!uid.equals(StaticValue.rootAccount)){
+            return Result.error("无权删除");
+        }
+
+        evaluationService.delete(idEvl);
         return Result.success();
     }
 }

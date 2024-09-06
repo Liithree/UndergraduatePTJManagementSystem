@@ -1,6 +1,7 @@
 package npu.software.code.mapper;
 
 import npu.software.code.pojo.Student;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -32,4 +33,7 @@ public interface StudentMapper {
 
     @Update("update student set password = #{newPwd}, update_time = now() where uid = #{uid}")
     void updatePwd(String newPwd, String uid);
+
+    @Insert("insert into student (uid, name, password, dept, create_time, update_time, gender, age, work_time, salary) values (#{uid}, #{name}, #{password}, #{dept}, now(), now(), #{gender}, #{age}, #{workTime}, #{salary})")
+    void add(Student student);
 }

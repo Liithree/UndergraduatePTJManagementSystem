@@ -39,4 +39,13 @@ public class StudentServiceImpl implements StudentService {
     public void updatePwd(String newPwd, String uid) {
         studentMapper.updatePwd(newPwd, uid);
     }
+
+    @Override
+    public void add(Student student) {
+        student.setWorkTime(0.0);
+        student.setSalary(0.0);
+        student.setPassword("123456");
+        student.setBirthday(null);
+        studentMapper.add(student);
+    }
 }
