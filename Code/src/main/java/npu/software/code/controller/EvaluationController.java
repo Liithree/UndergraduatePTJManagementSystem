@@ -18,6 +18,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class EvaluationController {
     @Autowired
     private EvaluationService evaluationService;

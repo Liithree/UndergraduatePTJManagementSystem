@@ -2,6 +2,7 @@ package npu.software.code.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import npu.software.code.pojo.Result;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class FileUploadController {
 
     private static String url = "E:\\MajorInternship\\UndergraduatePTJManagementSystem\\Code\\src\\main\\resources\\images\\";

@@ -12,6 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class MessageController {
     @Autowired
     private MessageService messageService;

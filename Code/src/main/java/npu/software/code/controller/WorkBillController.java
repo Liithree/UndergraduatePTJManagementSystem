@@ -17,6 +17,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class WorkBillController {
     @Autowired
     private WorkBillService workBillService;
